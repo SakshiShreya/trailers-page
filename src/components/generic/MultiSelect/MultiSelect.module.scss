@@ -3,6 +3,7 @@ $width: 150px;
 
 .dropdown {
   color: $green;
+  cursor: pointer;
 
   &:hover {
     .selectOptions {
@@ -20,6 +21,7 @@ $width: 150px;
   padding: 3px 8px;
   width: $width;
   text-align: left;
+  cursor: pointer;
 
   &:after {
     font-family: "Font Awesome 5 Free";

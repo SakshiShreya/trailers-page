@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { changeFilterValues } from "../../../redux/filters/filtersActions";
 import styles from "./MultiSelect.module.scss";
 
 const MultiSelect = props => {
-  const [selected, setSelected] = useState(props.list.map(item => ({ name: item, selected: false })));
+  const reduxFilter = useSelector(state => state.filters[props.reduxKey]);
+  const [selected, setSelected] = useState(getInitialState());
   const dispatch = useDispatch();
+
+  function getInitialState() {
+    return props.list.map(item => ({ name: item, selected: false }))
+  }
 
   function handleCheck(event, index) {
     // set new selected values
@@ -16,13 +21,14 @@ const MultiSelect = props => {
     setSelected(tempSelected);
 
     // change redux filter state
-    dispatch(
-      changeFilterValues(
-        props.reduxKey,
-        tempSelected.filter(item => item.selected).map(item => item.name)
-      )
-    );
+    dispatch(changeFilterValues(props.reduxKey, tempSelected));
   }
+
+  useEffect(() => {
+    if (reduxFilter == undefined) {
+      setSelected(getInitialState());
+    }
+  }, [reduxFilter]);
 
   const totSelected = selected.filter(item => item.selected);
   return (
