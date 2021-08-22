@@ -24,7 +24,7 @@ const HeaderCont = () => {
       <div className={styles.right}>
         {!loading && (
           <>
-            <MultiSelect title="Languages" list={languageList} reduxKey="languages" />
+            <MultiSelect title="Languages" list={languageList} reduxKey="EventLanguage" />
             <button className={styles.clear} onClick={handleClear}><i className="fas fa-times"></i></button>
           </>
         )}
