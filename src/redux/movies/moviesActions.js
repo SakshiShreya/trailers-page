@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  FETCH_MOVIES_FAILURE,
-  FETCH_MOVIES_REQUEST,
-  FETCH_MOVIES_SUCCESS
-} from "./moviesTypes";
+import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS } from "./moviesTypes";
 
 function fetchMoviesRequest() {
   return {
@@ -25,16 +21,16 @@ function fetchMoviesFailure(error) {
   };
 }
 
-export const fetchMovies = () => {
+export function fetchMovies() {
   return function (dispatch) {
     dispatch(fetchMoviesRequest());
     axios
       .get("https://b47ae4ac-f461-46a0-9dfd-31c26a7e4d6a.mock.pstmn.io/")
-      .then((res) => {
+      .then(res => {
         dispatch(fetchMoviesSuccess(res.data));
       })
-      .catch((err) => {
+      .catch(err => {
         dispatch(fetchMoviesFailure(err.message));
       });
   };
-};
+}

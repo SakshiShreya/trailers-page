@@ -1,0 +1,60 @@
+$green: #49ba8e;
+$width: 150px;
+
+.dropdown {
+  color: $green;
+
+  &:hover {
+    .selectOptions {
+      display: block;
+    }
+  }
+}
+
+.title {
+  border: 1px solid $green;
+  background-color: transparent;
+  color: $green;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 3px 8px;
+  width: $width;
+  text-align: left;
+
+  &:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f078";
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 900;
+    float: right;
+  }
+}
+
+.selectOptions {
+  width: $width;
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background: #222;
+  padding: 3px 0;
+}
+
+.option {
+  &:hover {
+    color: $green;
+  }
+
+  label {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+
+  input {
+    margin: 3px 0 3px 8px;
+    vertical-align: bottom;
+  }
+}

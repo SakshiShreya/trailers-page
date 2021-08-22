@@ -19,10 +19,10 @@ const MovieDetails = props => {
         <iframe
           width={Math.min(width * 0.55, 560)}
           height="315"
-          src={"//www.youtube.com/embed/" + getId(props.movie.TrailerURL)}
-          frameborder="0"
+          src={"https://www.youtube.com/embed/" + getId(props.movie.TrailerURL)}
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
       <div className={styles.details}>

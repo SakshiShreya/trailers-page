@@ -1,7 +1,13 @@
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
+import filtersReducer from "./filters/filtersReducer";
 import moviesReducer from "./movies/moviesReducer";
 
-const store = createStore(moviesReducer, applyMiddleware(thunkMiddleware));
+const rootReducer = combineReducers({
+  movies: moviesReducer,
+  filters: filtersReducer
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;

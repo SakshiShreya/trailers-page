@@ -1,8 +1,4 @@
-import {
-  FETCH_MOVIES_FAILURE,
-  FETCH_MOVIES_REQUEST,
-  FETCH_MOVIES_SUCCESS
-} from "./moviesTypes";
+import { FETCH_MOVIES_FAILURE, FETCH_MOVIES_REQUEST, FETCH_MOVIES_SUCCESS } from "./moviesTypes";
 
 const initialState = {
   loading: false,
@@ -11,10 +7,11 @@ const initialState = {
   error: ""
 };
 
-const moviesReducer = (state = initialState, action) => {
+function moviesReducer (state = initialState, action) {
   switch (action.type) {
     case FETCH_MOVIES_REQUEST:
       return { ...state, loading: true };
+
     case FETCH_MOVIES_SUCCESS:
       return {
         ...state,
@@ -23,6 +20,7 @@ const moviesReducer = (state = initialState, action) => {
         moviesData: action.payload.moviesData,
         error: ""
       };
+
     case FETCH_MOVIES_FAILURE:
       return {
         ...state,
@@ -31,6 +29,7 @@ const moviesReducer = (state = initialState, action) => {
         moviesData: {},
         error: action.payload
       };
+
     default:
       return state;
   }

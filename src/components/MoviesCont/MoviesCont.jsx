@@ -21,7 +21,7 @@ function getMoviesRows(movies, numOfCols) {
 
 const MoviesCont = props => {
   const dispatch = useDispatch();
-  const { loading, moviesData } = useSelector(state => state);
+  const { loading, moviesData } = useSelector(state => state.movies);
   const { width } = useWindowDimensions();
   const [numOfCols, setNumOfCols] = useState(getNumOfCols(width));
   const [movieDetails, setMovieDetails] = useState(initialMovieDetailsState);
