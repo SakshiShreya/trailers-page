@@ -1,0 +1,80 @@
+$green: #49ba8e;
+$thumbnail-height: 240px;
+$thumbnail-width: 180px;
+
+.movieCont {
+  width: $thumbnail-width;
+  height: $thumbnail-height + 40px;
+  margin: 10px;
+}
+
+.thumbnail {
+  position: relative;
+  height: $thumbnail-height;
+  width: $thumbnail-width;
+  background: gray;
+  overflow: hidden;
+}
+
+.play {
+  position: absolute;
+  left: $thumbnail-width / 2 - 15px;
+  top: $thumbnail-height / 2 - 15px;
+  color: white;
+  line-height: 30px;
+  width: 36px;
+  text-align: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  padding-left: 3px;
+  background-color: #00000055;
+}
+
+.title {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.date {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 30px;
+  width: 30px;
+  padding: 8px;
+  text-align: center;
+  background: $green;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.rating {
+  position: absolute;
+  bottom: 20px;
+  right: 8px;
+  font-size: 13px;
+}
+
+.thumbsUp {
+  margin-right: 6px;
+  color: $green;
+  font-size: 14px;
+}
+
+.votes {
+  position: absolute;
+  bottom: 10px;
+  right: 8px;
+  font-size: 9px;
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(transparent, transparent 50%, #000000dd 100%);
+  top: 0;
+}
