@@ -4,6 +4,10 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import FilterSection from "../generic/FilterSection/FilterSection";
 import styles from "./HeaderCont.module.scss";
 
+/**
+ * Header Component
+ * @returns React component for header
+ */
 const HeaderCont = () => {
   const { width } = useWindowDimensions();
 
@@ -16,6 +20,7 @@ const HeaderCont = () => {
           <button className={styles.tag}>Now Showing</button>
         </div>
       </div>
+
       {width >= mobileBreakpoint && (
         <div className={styles.right}>
           <FilterSection />

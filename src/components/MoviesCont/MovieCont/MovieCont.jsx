@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./MovieCont.module.scss";
 
+/**
+ * `movie` - movie object from api
+ * `onMovieClick` - callback function that runs on clicking movie card
+ * @param {{movie: object, onMovieClick: () => void}} props component props
+ * @returns React Element for 1 movie card
+ */
 const MovieCont = props => {
   return (
     <div className={styles.movieCont} onClick={props.onMovieClick}>
@@ -10,8 +16,11 @@ const MovieCont = props => {
           alt={props.movie.EventTitle}
         />
         <div className={styles.overlay}></div>
+
         <i className={"fas fa-play " + styles.play} />
+
         <div className={styles.date}>{props.movie.ShowDate.split(",")[0]}</div>
+        
         <p className={styles.rating}>
           <i className={"fas fa-thumbs-up " + styles.thumbsUp}></i>
           {props.movie.wtsPerc} %

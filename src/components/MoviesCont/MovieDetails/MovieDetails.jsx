@@ -3,6 +3,11 @@ import { mobileBreakpoint } from "../../../constants/contants";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import styles from "./MovieDetails.module.scss";
 
+/**
+ * Extracts video id from youtube url
+ * @param {string} url youtube url
+ * @returns {string} extracted id from `url`
+ */
 function getId(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
@@ -10,6 +15,11 @@ function getId(url) {
   return match && match[2].length === 11 ? match[2] : null;
 }
 
+/**
+ * `movie` - movie object from api
+ * @param {{movie: object}} props component props
+ * @returns React elemnt that shows 1 movie's details
+ */
 const MovieDetails = props => {
   const { width } = useWindowDimensions();
   const genres = props.movie.EventGenre.split("|");
@@ -52,6 +62,8 @@ const MovieDetails = props => {
             </div>
           </div>
         </div>
+
+        {/* Description is not present in api */}
         <div className={styles.description}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur beatae eveniet quis quia optio rerum voluptate facilis
           architecto in asperiores? Neque repellendus nemo nam architecto fugiat voluptatem. Neque, in doloremque.

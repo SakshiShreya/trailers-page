@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 
+/**
+ * Returns height and width of window
+ * @returns {{width: number; height: number}} height and width of window
+ */
 function getWindowDimensions() {
   const { clientWidth: width, clientHeight: height } = document.body;
 
@@ -9,6 +13,10 @@ function getWindowDimensions() {
   };
 }
 
+/**
+ * Hook that calculates and updates height and width on resize of window
+ * @returns {{width: number, height: number}} height and width of window
+ */
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 

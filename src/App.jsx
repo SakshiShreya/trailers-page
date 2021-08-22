@@ -14,6 +14,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <HeaderCont />
+      {/* Show filter below header only for mobile view */}
       {width < mobileBreakpoint && <div className="filters"><FilterSection /></div>}
       <MoviesCont />
     </Provider>

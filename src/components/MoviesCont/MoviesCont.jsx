@@ -6,12 +6,26 @@ import styles from "./MoviesCont.module.scss";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import MovieDetails from "./MovieDetails/MovieDetails";
 
+/**
+ * used to render movieDetails component
+ */
 const initialMovieDetailsState = { index: null, key: null };
 
+/**
+ * Calculates number of movies to show in one row
+ * @param {number} width width of screen
+ * @returns {number} number of movies to show in one row
+ */
 function getNumOfCols(width) {
   return Math.floor(width / 200);
 }
 
+/**
+ * Converts 1D movie array to 2D array. Each inner array contains `numOfCols` elements.
+ * @param {object[]} movies Array of movie object from api
+ * @param {number} numOfCols number of movies in one row
+ * @returns {object[][]} converted array of array of movies
+ */
 function getMoviesRows(movies, numOfCols) {
   const newMovies = [];
   const tempMovies = [...movies];
@@ -19,6 +33,12 @@ function getMoviesRows(movies, numOfCols) {
   return newMovies;
 }
 
+/**
+ * Retruns all the movies in the same format as recieved from api, i.e. in object format
+ * @param {object} movies original movies object that contains all the movies
+ * @param {object} filters all the applied filters
+ * @returns {object} all filtered movies
+ */
 function filterMovies(movies, filters) {
   const filterKeys = Object.keys(filters);
   let filteredMovies = Object.values(movies);
@@ -43,24 +63,31 @@ function filterMovies(movies, filters) {
   }, {});
 }
 
+/**
+ * Movies Section
+ * @returns React Elment that shows all the movies
+ */
 const MoviesCont = () => {
+  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
   const { loading, moviesData } = useSelector(state => state.movies);
-  const [filteredMovies, setFilteredMovies] = useState([]);
   const filters = useSelector(state => state.filters);
-  const { width } = useWindowDimensions();
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [numOfCols, setNumOfCols] = useState(getNumOfCols(width));
   const [movieDetails, setMovieDetails] = useState(initialMovieDetailsState);
 
+  // calls the api to fetch movies
   useEffect(() => {
     dispatch(fetchMovies());
   }, []);
 
+  // updates the layout on change of screen width
   useLayoutEffect(() => {
     setNumOfCols(getNumOfCols(width));
     setMovieDetails(initialMovieDetailsState);
   }, [width]);
 
+  // filters movies
   useEffect(() => {
     if (Object.keys(filters).length == 0) {
       setFilteredMovies(moviesData);
@@ -69,6 +96,11 @@ const MoviesCont = () => {
     }
   }, [filters, moviesData]);
 
+  /**
+   * Used to open the MovieDetails Component above the row of clicked movie
+   * @param {number} index row number
+   * @param {string} key key of movie as in the original movies object
+   */
   function handleMovieClick(index, key) {
     if (key === movieDetails.key) {
       setMovieDetails(initialMovieDetailsState);
@@ -80,6 +112,7 @@ const MoviesCont = () => {
   if (loading) {
     return <p>Loading ...</p>;
   } else {
+    // convert the movies to 2D array
     const movies2D = getMoviesRows(Object.keys(filteredMovies), numOfCols);
 
     return (
@@ -88,8 +121,8 @@ const MoviesCont = () => {
           .map((movies, index) => (
             <Fragment key={index}>
               {movieDetails.index == index && <MovieDetails movie={filteredMovies[movieDetails.key]} />}
+
               <div className={styles.row}>
-                {/* {JSON.stringify(movies)} */}
                 {movies.map(key => (
                   <MovieCont key={key} movie={filteredMovies[key]} onMovieClick={() => handleMovieClick(index, key)} />
                 ))}

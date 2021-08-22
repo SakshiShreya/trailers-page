@@ -46,6 +46,8 @@ $width: 150px;
 }
 
 .option {
+  cursor: pointer;
+
   &:hover {
     color: $green;
   }
@@ -54,6 +56,7 @@ $width: 150px;
     display: inline-block;
     padding: 3px 8px;
     font-size: 12px;
+    width: calc(100% - 25px);
   }
 
   input {
