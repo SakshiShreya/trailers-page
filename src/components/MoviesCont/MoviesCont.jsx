@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/movies/moviesActions";
 import MovieCont from "./MovieCont/MovieCont";
 import styles from "./MoviesCont.module.scss";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import MovieDetails from "./MovieDetails/MovieDetails";
 
 const initialMovieDetailsState = { index: null, key: null };
 
@@ -29,7 +30,7 @@ const MoviesCont = props => {
     dispatch(fetchMovies());
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setNumOfCols(getNumOfCols(width));
     setMovieDetails(initialMovieDetailsState);
   }, [width]);
@@ -52,8 +53,9 @@ const MoviesCont = props => {
         {movies2D
           .map((movies, index) => (
             <Fragment key={index}>
-              {movieDetails.index == index && <div className={styles.movieDet}></div>}
+              {movieDetails.index == index && <MovieDetails movie={moviesData[movieDetails.key]} />}
               <div className={styles.row}>
+                {/* {JSON.stringify(movies)} */}
                 {movies.map(key => (
                   <MovieCont key={key} movie={moviesData[key]} onMovieClick={() => handleMovieClick(index, key)} />
                 ))}

@@ -14,11 +14,19 @@ export default function useWindowDimensions() {
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions());
+      const dimensions = getWindowDimensions();
+
+      if (dimensions.height !== windowDimensions.height || dimensions.width !== windowDimensions.width) {
+        setWindowDimensions(getWindowDimensions());
+      }
     }
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleResize);
+    };
   }, []);
 
   return windowDimensions;

@@ -1,0 +1,70 @@
+.movieDetails {
+  padding: 10px;
+  display: flex;
+}
+
+.trailer {
+  display: flex;
+}
+
+.details {
+  flex: 1;
+  margin-left: 10px;
+  background: #222;
+  padding: 10px;
+}
+
+.title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.language {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.genre {
+  margin-bottom: 15px;
+}
+
+.tag {
+  font-size: 10px;
+  border: 1px solid white;
+  margin-right: 10px;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.rating {
+  font-size: 13px;
+  display: inline-block;
+  margin-right: 20px;
+
+  .icon {
+    margin-right: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .data {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .line1 {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+
+  .line2 {
+    font-size: 9px;
+    color: #ffffff99;
+  }
+}
+
+.description {
+  font-size: 12px;
+  color: #ffffff99;
+}
