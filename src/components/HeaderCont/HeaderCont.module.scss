@@ -1,7 +1,7 @@
-$green: #49ba8e;
+@import "../../assets/scss/variables.scss";
 
 .header {
-  background: #000;
+  background: $black;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -21,31 +21,16 @@ $green: #49ba8e;
 
   .tag {
     padding: 3px 8px;
-    background: #666;
+    background: $light-grey;
     margin-right: 10px;
     border-radius: 3px;
     font-size: 12px;
     text-transform: uppercase;
     border: none;
-    color: white;
+    color: $white;
 
     &.active {
       background: $green;
     }
-  }
-}
-
-.right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  .clear {
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 20px;
-    margin-left: 20px;
-    cursor: pointer;
   }
 }

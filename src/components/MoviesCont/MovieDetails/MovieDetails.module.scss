@@ -1,6 +1,12 @@
+@import "../../../assets/scss/variables.scss";
+
 .movieDetails {
   padding: 10px;
   display: flex;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 }
 
 .trailer {
@@ -10,8 +16,13 @@
 .details {
   flex: 1;
   margin-left: 10px;
-  background: #222;
+  background: $dark-grey;
   padding: 10px;
+
+  @media (max-width: 576px) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
 
 .title {
@@ -31,7 +42,7 @@
 
 .tag {
   font-size: 10px;
-  border: 1px solid white;
+  border: 1px solid $white;
   margin-right: 10px;
   padding: 3px 10px;
   border-radius: 20px;

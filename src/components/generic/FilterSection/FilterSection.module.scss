@@ -1,0 +1,15 @@
+@import "../../../assets/scss/variables.scss";
+
+.filterSection {
+  display: flex;
+  align-items: center;
+}
+
+.clear {
+  border: none;
+  background: transparent;
+  color: $white;
+  font-size: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}

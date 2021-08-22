@@ -22,10 +22,8 @@ export default function useWindowDimensions() {
     }
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleResize);
     };
   }, []);
 

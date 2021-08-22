@@ -1,4 +1,5 @@
 import React from "react";
+import { mobileBreakpoint } from "../../../constants/contants";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import styles from "./MovieDetails.module.scss";
 
@@ -17,7 +18,7 @@ const MovieDetails = props => {
     <div className={styles.movieDetails}>
       <div className={styles.trailer}>
         <iframe
-          width={Math.min(width * 0.55, 560)}
+          width={width < mobileBreakpoint ? "100%" : Math.min(width * 0.55, 560)}
           height="315"
           src={"https://www.youtube.com/embed/" + getId(props.movie.TrailerURL)}
           frameBorder="0"
